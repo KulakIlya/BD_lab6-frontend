@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owners Table</title>
+    <script defer src="./index.js"></script>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+      }
+      th {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Database Table Viewer</h1>
+
+    <!-- Вибір таблиці -->
+    <select id="tableSelect" onchange="loadTableData()">
+      <option value="Owners">Owners</option>
+      <option value="Properties">Properties</option>
+      <option value="Transactions">Transactions</option>
+    </select>
+
+    <!-- Фільтрація за email для таблиці Owners -->
+    <input
+      type="text"
+      id="emailFilter"
+      placeholder="Filter by Email (for Owners)"
+    />
+    <button onclick="filterByEmail()">Filter</button>
+
+    <h2>Filter by Range</h2>
+    <select id="rangeTableSelect">
+      <option value="Properties">Properties</option>
+    </select>
+    <label for="rangeField">Field:</label>
+    <select id="rangeField">
+      <option value="Price">Price</option>
+      <option value="Size">Size</option>
+    </select>
+    <label for="minValue">Min:</label>
+    <input type="number" id="minValue" placeholder="Min Value" />
+    <label for="maxValue">Max:</label>
+    <input type="number" id="maxValue" placeholder="Max Value" />
+    <button onclick="filterByRange()">Filter</button>
+    <h2>Get Statistics (Avg, Max, Min)</h2>
+    <select id="statsTableSelect">
+      <option value="Properties">Properties</option>
+    </select>
+    <label for="statsField">Field:</label>
+    <select id="statsField">
+      <option value="Price">Price</option>
+      <option value="Size">Size</option>
+    </select>
+    <button onclick="getStatistics()">Get Stats</button>
+    <h2>Group Records by Field</h2>
+    <select id="groupTableSelect">
+      <option value="Properties">Properties</option>
+    </select>
+    <label for="groupField">Group By:</label>
+    <select id="groupField">
+      <option value="Type">Type</option>
+    </select>
+    <button onclick="groupBy()">Group</button>
+
+    <table id="dataTable">
+      <thead id="tableHeader">
+        <tr></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+</html>
